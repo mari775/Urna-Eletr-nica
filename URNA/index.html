@@ -35,10 +35,9 @@
     <img src="ImgRepublicaFederativa.png" id="imgvotarr" alt="">
 
     <script>
-        let numeroDigitado = ''; // Variável para armazenar o número digitado pelo usuário
+        let numeroDigitado = ''; 
 
         function clicou(numero) {
-            // Adiciona o número clicado ao campo de voto
             if (numeroDigitado.length < 2) {
                 numeroDigitado += numero;
                 document.getElementById("campo1").value = numeroDigitado[0];
@@ -46,11 +45,10 @@
             }
         }
 
-        // Função para limpar o campo e a variável ao clicar em CORRIGE
         function corrige() {
-            numeroDigitado = ''; // Limpa a variável
-            document.getElementById("campo1").value = ''; // Limpa o primeiro campo
-            document.getElementById("campo2").value = ''; // Limpa o segundo campo
+            numeroDigitado = '';
+            document.getElementById("campo1").value = ''; 
+            document.getElementById("campo2").value = ''; 
         }
 
         function confirma() {
@@ -62,10 +60,9 @@
                 alert('Número inválido');
                 return;
             }
-            window.location.href = "index1.html"; // Redireciona para a página de resultado
+            window.location.href = "index1.html"; 
         }
 
-        // Função para armazenar os dados do voto no localStorage
         function votar(numero, nome, partido, vice, fotoCandidato, fotoVice) {
             localStorage.setItem("votoNumero", numero);
             localStorage.setItem("votoNome", nome);

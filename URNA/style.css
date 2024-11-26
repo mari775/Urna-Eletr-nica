@@ -470,7 +470,55 @@ span{
 
 #botaoAvancar {
     position: relative;
-    z-index: 10; /* Garante que o botão fique acima de outros elementos */
+    z-index: 10; 
 }
+
+@media (max-width: 600px) {
+    #containerprefeito {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .teclado {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #campo1, #campo2 {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .b1, .botao-branco, .botao-corrige, .botao-confirma {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    #imgvotarr {
+        max-width: 25%; 
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    canvas {
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto;
+     }
+        }
 
 
