@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Votação Confirmada</title>
+</head>
+<body>
+    <div id="container">
+        <div id="resultadovotado">
+            <h1 id="tituloVotado">Você votou:</h1>
+            <div id="resultadoDetalhado">
+                <!-- O conteúdo do resultado vai ser inserido aqui -->
+            </div>
+        </div>
+    </div>
+    <a href="resultadosurna.html" id="botaoVotarVereador">Avançar</a>
+
+    <script>
+        // Recupera os dados do localStorage
+        let votoNumero = localStorage.getItem("votoVereadorNumero");
+        let votoNome = localStorage.getItem("votoVereadorNome");
+        let votoPartido = localStorage.getItem("votoVereadorPartido");
+
+        const resultadoDiv = document.getElementById("resultadoDetalhado");
+
+        // Dados dos candidatos
+        const candidatos = {
+            "48900": {
+                nome: "Candido",
+                partido: "PNT - Partido Não é Totó",
+                foto: "candido.png"  // Coloque o caminho correto da imagem
+            },
+            "12745": {
+                nome: "Dani",
+                partido: "PDL - Partido das Divas Lindas",
+                foto: "dani.png"  // Coloque o caminho correto da imagem
+            },
+            "48120": {
+                nome: "Diego",
+                partido: "PNT - Partido Não é Totó",
+                foto: "diego.png"  // Coloque o caminho correto da imagem
+            },
+            "12890": {
+                nome: "Rory",
+                partido: "PDL - Partido das Divas Lindas",
+                foto: "rory.png"  // Coloque o caminho correto da imagem
+            }
+        };
+
+        // Exibe as informações do voto
+        if (votoNumero && votoNome && votoPartido) {
+            if (votoNumero === "branco") {
+                resultadoDiv.innerHTML = `
+                    <p>Você votou em branco.</p>
+                `;
+            } else if (candidatos[votoNumero]) {
+                const candidato = candidatos[votoNumero];
+                resultadoDiv.innerHTML = `
+                    <div class="candidatoVotado">
+                        <img src="${candidato.foto}" alt="Foto de ${candidato.nome}" class="fotoVotado">
+                        <div class="candidatoInfoVotado">
+                            <h3>${candidato.nome}</h3>
+                            <p>Numero: ${votoNumero}</p>
+                            <p>Partido: ${candidato.partido}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        } else {
+            resultadoDiv.innerHTML = "Nenhum voto registrado ou número inválido.";
+        }
+    </script>
+</body>
+</html>

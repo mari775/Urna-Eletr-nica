@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Votação Confirmada</title>
+</head>
+<body>
+    <div id="container">
+        <div id="resultadovotado">
+            <h1 id="tituloVotado">Você votou:</h1>
+            <div id="resultadoDetalhado">
+                <!-- O conteúdo do resultado aqui -->
+            </div>
+        </div>
+    </div>
+    <a href="votar-vereador.html" id="botaoVotarVereador">Avançar</a>  <!-- Alterado para redirecionar para a página de votação do vereador -->
+    
+    <script>
+        // Recupera o número digitado pelo usuário do localStorage
+        let votoNumero = localStorage.getItem("votoNumero");
+
+        const resultadoDiv = document.getElementById("resultadoDetalhado");
+
+        // Dados dos candidatos
+        const candidatos = {
+            "12": {
+                nome: "Clara",
+                partido: "PDL - Partido das Divas Lindas",
+                vice: "Elisiane",
+                foto: "clara.png",  // Coloque o caminho correto da imagem
+                fotoVice: "elisiane.png"  // Coloque o caminho correto da imagem
+            },
+            "48": {
+                nome: "Helder",
+                partido: "PNT - Partido Não é Totó",
+                vice: "Paulo",
+                foto: "helder.png",  // Coloque o caminho correto da imagem
+                fotoVice: "paulo.jpg"  // Coloque o caminho correto da imagem
+            }
+        };
+
+        // Verifica se o número foi digitado e se é um número válido
+        if (votoNumero && candidatos[votoNumero]) {
+            const candidato = candidatos[votoNumero];
+
+            // Exibe as informações do candidato votado
+            resultadoDiv.innerHTML = `
+                <div class="candidatoVotado">
+                    <img src="${candidato.foto}" alt="Foto de ${candidato.nome}" class="fotoVotado" id="fotoVotado">
+                    <div class="candidatoInfoVotado" id="candidatoInfoVotado">
+                        <h3 id="nomeVotado">${candidato.nome}</h3>
+                        <p id="numeroVotado">${votoNumero}</p>
+                        <p id="partidoVotado">${candidato.partido}</p>
+                        <div class="viceVotado" id="viceVotado">
+                            <img src="${candidato.fotoVice}" alt="Foto de ${candidato.vice}" class="fotoVotado" id="fotoVotadoVice">
+                            <span id="nomeViceVotado">${candidato.vice}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultadoDiv.innerHTML = "Nenhum voto registrado ou número inválido.";
+        }
+
+        
+    </script>
+</body>
+</html>

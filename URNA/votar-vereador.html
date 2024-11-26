@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Votar Vereador</title>
+</head>
+<body>
+    <div id="containerprefeito">
+        <div id="conteudoprefeito">
+            <input size="1" type="text" id="campo1" maxlength="1" readonly>
+            <input size="1" type="text" id="campo2" maxlength="1" readonly>
+            <input size="1" type="text" id="campo3" maxlength="1" readonly>
+            <input size="1" type="text" id="campo4" maxlength="1" readonly>
+            <input size="1" type="text" id="campo5" maxlength="1" readonly>
+        </div>
+
+        <div class="teclado">
+            <button class="b1" onclick="clicou(1)">1</button>
+            <button class="b1" onclick="clicou(2)">2</button>
+            <button class="b1" onclick="clicou(3)">3</button>
+            <button class="b1" onclick="clicou(4)">4</button>
+            <button class="b1" onclick="clicou(5)">5</button>
+            <button class="b1" onclick="clicou(6)">6</button>
+            <button class="b1" onclick="clicou(7)">7</button>
+            <button class="b1" onclick="clicou(8)">8</button>
+            <button class="b1" onclick="clicou(9)">9</button>
+            <button class="b1" onclick="clicou(0)">0</button>
+            <button class="botao-branco" onclick="votarBranco()">BRANCO</button>
+            <button class="botao-corrige" onclick="corrige()">CORRIGE</button>
+            <button class="botao-confirma" onclick="confirma()">CONFIRMA</button>
+        </div>
+    </div>
+    <img src="ImgRepublicaFederativa.png" id="imgvotarr" alt="">
+
+    <script>
+        let numeroDigitado = ''; // Variável para armazenar o número digitado pelo usuário
+
+        function clicou(numero) {
+            // Adiciona o número clicado ao campo de voto
+            if (numeroDigitado.length < 5) {
+                numeroDigitado += numero;
+                document.getElementById(`campo${numeroDigitado.length}`).value = numero;
+            }
+        }
+
+        function corrige() {
+            numeroDigitado = ''; // Limpa a variável
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`campo${i}`).value = ''; // Limpa os campos
+            }
+        }
+
+        function confirma() {
+            const vereadores = {
+                "48900": { nome: "Candido", partido: "PNT - Partido Não é Totó" },
+                "12745": { nome: "Dani", partido: "PDL - Partido das Divas Lindas" },
+                "48120": { nome: "Diego", partido: "PNT - Partido Não é Totó" },
+                "12890": { nome: "Rory", partido: "PDL - Partido das Divas Lindas" }
+            };
+
+            if (vereadores[numeroDigitado]) {
+                const vereador = vereadores[numeroDigitado];
+                votarVereador(numeroDigitado, vereador.nome, vereador.partido);
+                window.location.href = "vereadorconfirma.html";  // Redireciona para a página de confirmação
+            } else {
+                alert("Número inválido. Tente novamente.");
+                corrige();
+            }
+        }
+
+        function votarVereador(numero, nome, partido) {
+            localStorage.setItem("votoVereadorNumero", numero);
+            localStorage.setItem("votoVereadorNome", nome);
+            localStorage.setItem("votoVereadorPartido", partido);
+        }
+
+        function votarBranco() {
+            localStorage.setItem("votoVereadorNumero", "branco");
+            localStorage.setItem("votoVereadorNome", "Voto em Branco");
+            localStorage.setItem("votoVereadorPartido", "");
+            window.location.href = "vereadorconfirma.html";  // Redireciona para a página de confirmação
+        }
+    </script>
+</body>
+</html>

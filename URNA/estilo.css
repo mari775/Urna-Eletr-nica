@@ -1,0 +1,120 @@
+
+/* Estilos globais */
+body {
+    background-color: #EBFFEA;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00600A;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para containers */
+#container {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+#conteudo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#conteudo input {
+    font-size: 2em;
+    text-align: center;
+    margin: 0 5px;
+    width: 50px;
+    height: 60px;
+    border: 2px solid #00600A;
+    border-radius: 5px;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.teclado button {
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 5px;
+}
+
+.botao-branco {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+.botao-corrige {
+    background-color: #f44336;
+    color: white;
+}
+
+.botao-confirma {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Estilo da página de confirmação */
+#imgvotar {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+#conteudoprefeito input {
+    border: solid 2px #34495e;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+

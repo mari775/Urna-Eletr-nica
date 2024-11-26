@@ -1,0 +1,476 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #bddbbc;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+/*pag inicial*/
+.Vindo{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#bemVindo{
+    font-size: 55px;
+    margin-bottom: -50px;
+}
+
+#Urninha{
+    font-size: 70px;
+    padding-top: 0px;
+}
+
+#RepublicaImg{
+    width: 270px;
+    margin-top: 20px;
+}
+
+#avancarInicial{
+    width: 130px;
+    cursor: pointer;
+    height: 50px;
+    background-color: #1e692f;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 15px;
+    border: solid #1e692f;
+    margin-top: 150px;
+    
+}
+
+
+
+
+/*pagina do CPF*/
+#titulocpf {
+    text-align: center;
+    margin-top: -120px;
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#formulario {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#Taquara {
+    text-align: center;
+    margin-top: -70px;
+    font-size: 20px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#cpf {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#cpf:focus {
+    border-color: #black;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+#confirmarcpf {
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #1e692f;
+}
+
+#confirmarcpf:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#confirmarcpf:active {
+    background-color: #004085;
+    transform: translateY(2px);
+}
+
+#imgcpf{
+    margin-top: 630px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90px;
+}
+
+
+
+
+
+
+/*info de candidatos*/
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.column {
+    width: 48%;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+#prefeitoTitulo, #vereadorTitulo {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 0; 
+    margin-bottom: 100px;
+}
+
+.candidatoss{
+    margin-top: -80px;
+}
+
+.candidato {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    gap: 20px;
+    max-height: 180px;
+}
+
+.candidato .foto {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.candidatoInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: -15px;
+}
+
+.vice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 65px;
+}
+
+.vice .foto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.fotovice{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-top: -110px;
+}
+
+span{
+    color: black;
+    margin-top: -100px;
+}
+
+.vice{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#viceClara, #viceHelder{
+    margin-top: -10px;
+}
+
+#numero{
+    margin-top: -20px;
+}
+
+#partido{
+    margin-top: -20px;
+}
+
+#botaoAvancar {
+    text-align: center;
+    background-color: #1e692f; 
+    border: #1e692f;
+    width: 130px;
+    height: 50px;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+
+
+
+/*pag pra votar pro prefeito*/
+#containerprefeito {
+    box-sizing: border-box;
+    margin: auto;
+    width: 700px;
+    height: 600px;
+    border: solid 2px #2c3e50;
+    background-color: #ecf0f1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#conteudoprefeito {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+#campo1, #campo2, #campo3, #campo4, #campo5 {
+    border: solid 2px #34495e;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    margin: 10px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.teclado {
+    display: flex;
+    width: 280px;
+    height: 300px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: black;
+    margin: 10px auto;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.b1 {
+    width: 70px;
+    height: 40px;
+    background-color: black;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px 8px 5px 1px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px rgb(94, 94, 94);
+}
+
+.botao-branco, .botao-corrige, .botao-confirma {
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.botao-branco {
+    background-color: aliceblue;
+    color: black;
+    width: 76px;
+    height: 40px;
+}
+
+.botao-corrige {
+    background-color: rgb(231, 120, 29);
+    color: black;
+    width: 82px;
+    height: 40px;
+}
+
+.botao-confirma {
+    background-color: rgb(29, 231, 73);
+    color: black;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+}
+
+#imgvotarr {
+    text-decoration: none;
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90px;
+}
+
+
+
+
+
+
+/*página de resultado */
+#container {
+    box-sizing: border-box;
+    width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#tituloVotado {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#resultadoDetalhado {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.candidatoVotado {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.fotoVotado {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 100px;
+    margin-right: 10px;
+    margin-top: -60px;
+    object-fit: cover;
+}
+
+#candidatoInfoVotado {
+    flex: 1;
+}
+
+#nomeVotado {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+#numeroVotado {
+    margin-bottom: 10px;
+    margin-top: -3px;
+}
+
+#partidoVotado {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+.viceVotado {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#fotoVotadoVice {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -100px;
+}
+
+#nomeViceVotado {
+    font-size: 18px;
+}
+
+#botaoVotarVereador {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: white;
+    background-color: #1e692f;
+    width: 110px;
+    height: 35px;
+    padding-top: 4px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#botaoAvancar {
+    position: relative;
+    z-index: 10; /* Garante que o botão fique acima de outros elementos */
+}
+
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados em Tempo Real</title>
+
+    <style>
+        canvas {
+            max-width: 500px;
+            max-height: 500px;
+            margin: 0 auto;
+            display: block;
+        }
+        * {
+            background-color: #daffd8;
+            color: #1e692f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB...", // Certifique-se de usar a sua chave correta
+            authDomain: "urna-d890b.firebaseapp.com",
+            databaseURL: "https://urna-d890b-default-rtdb.firebaseio.com",
+            projectId: "urna-d890b",
+            storageBucket: "urna-d890b.firebasestorage.app",
+            messagingSenderId: "295730343723",
+            appId: "1:295730343723:web:5cc026a59120be81f79f6e",
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Candidatos
+        const candidatosPrefeito = {
+            "12": { nome: "Clara", partido: "PDL" },
+            "48": { nome: "Helder", partido: "PNT" },
+        };
+
+        const candidatosVereador = {
+            "48900": { nome: "Candido", partido: "PNT" },
+            "12745": { nome: "Dani", partido: "PDL" },
+            "48120": { nome: "Diego", partido: "PNT" },
+            "12890": { nome: "Rory", partido: "PDL" },
+        };
+
+        let chart1, chart2;
+
+        // Processar votos e atualizar gráficos
+        function processVotes(votos) {
+            const votosPrefeito = Object.entries(votos.prefeito || {}).map(([num, qtd]) => ({
+                label: `${candidatosPrefeito[String(num)]?.nome || "Candidato " + num} (${candidatosPrefeito[String(num)]?.partido || "Sem partido"})`,
+                votos: qtd,
+            }));
+
+            const votosVereador = Object.entries(votos.vereador || {}).map(([num, qtd]) => ({
+                label: `${candidatosVereador[String(num)]?.nome || "Candidato " + num} (${candidatosVereador[String(num)]?.partido || "Sem partido"})`,
+                votos: qtd,
+            }));
+
+            createCharts(votosPrefeito, votosVereador);
+        }
+
+        // Criar ou atualizar gráficos
+        function createCharts(prefeitoData, vereadorData) {
+            // Destruir gráficos anteriores, se existirem
+            if (chart1) chart1.destroy();
+            if (chart2) chart2.destroy();
+
+            const ctx1 = document.getElementById("grafico1").getContext("2d");
+            const ctx2 = document.getElementById("grafico2").getContext("2d");
+
+            chart1 = new Chart(ctx1, {
+                type: "pie",
+                data: {
+                    labels: prefeitoData.map((d) => d.label),
+                    datasets: [{
+                        data: prefeitoData.map((d) => d.votos),
+                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+                    }],
+                },
+            });
+
+            chart2 = new Chart(ctx2, {
+                type: "pie",
+                data: {
+                    labels: vereadorData.map((d) => d.label),
+                    datasets: [{
+                        data: vereadorData.map((d) => d.votos),
+                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+                    }],
+                },
+            });
+        }
+
+        // Monitorar mudanças no banco de dados
+        const votosRef = ref(db, "votos");
+        onValue(votosRef, (snapshot) => {
+            if (snapshot.exists()) {
+                const votos = snapshot.val();
+                console.log("Dados recebidos:", votos); // Verificar dados recebidos no console
+                processVotes(votos);
+            } else {
+                console.error("Nenhum dado encontrado no banco de dados.");
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">Resultados da Urna em Tempo Real</h1>
+    <div>
+        <h2 style="text-align: center;">Gráfico de Votos para Prefeito</h2>
+        <canvas id="grafico1"></canvas>
+    </div>
+    <div>
+        <h2 style="text-align: center;">Gráfico de Votos para Vereador</h2>
+        <canvas id="grafico2"></canvas>
+    </div>
+    <div><h3 style="text-align: center; color: black;">Os votos são a base da democracia, permitindo que cidadãos expressem sua vontade <br>e escolham seus representantes. Cada voto fortalece a participação popular e legitima as decisões políticas.</h2></div>
+</body>
+</html>
